@@ -9,13 +9,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-12, macos-14]
+        os: [macos-15, macos-14]
     runs-on: ${{ matrix.os }}
     name: Build on ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - name: Setup tools
-        run: brew install soapysdr
+        run: brew install soapysdr libftdi
       - name: Configure
         run: cmake -B build
       - name: Build
@@ -25,7 +25,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04, ubuntu-22.04]
+        os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     name: Build on ${{ matrix.os }}
     steps:
@@ -34,7 +34,8 @@ jobs:
         run: |
           sudo apt-get update -q -y
           sudo apt-get install -y --no-install-recommends cmake ninja-build
-          sudo apt-get install -q -y libsoapysdr-dev
+          sudo apt-get install -q -y libsoapysdr-dev libftdi-dev libftdi-dev
+          libftdi-config --libs --cflags
       - name: Configure
         run: cmake -GNinja -B build
       - name: Build
