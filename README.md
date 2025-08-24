@@ -1,4 +1,4 @@
-# Soapy SDR module for NetSDR protocol
+# Soapy SDR module for the RFSPACE SDR-14 receiver
 
 ## Dependencies
 
@@ -6,4 +6,7 @@
 
 ## Documentation
 
-* https://github.com/pothosware/SoapyNetSDR/wiki
+* only supported bandwidth 150kHz
+* nothing else so far...
+
+
